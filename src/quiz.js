@@ -50,8 +50,22 @@ checkAnswer(answer){
     hasEnded() {
         if (this.currentQuestionIndex < this.questions.length) {
             return false;
-        } else if (this.currentQuestionIndex ===this.questions.length) {
+        } else if (this.currentQuestionIndex === this.questions.length) {
             return true;
         }
         }
+
+        filterQuestionsByDifficulty(difficulty) {
+            if (difficulty >= 1 && difficulty <=3) {
+                this.questions = this.questions.filter(level => level.difficulty === difficulty)
+
+            }
+            }
+averageDifficulty() {
+    const sumAvrg = this.questions.reduce((accumlator, ques) => {
+return accumlator + ques.difficulty;
+    }, 0);
+    return sumAvrg / this.questions.length;
 }
+
+        }
