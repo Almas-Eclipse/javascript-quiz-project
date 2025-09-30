@@ -61,6 +61,27 @@ document.addEventListener("DOMContentLoaded", () => {
   
   let timer;
   
+
+  function startTimer(){
+    let count = 120;
+    timer = setInterval(() => {
+count--
+
+    const mins = Math.floor(count / 60).toString().padStart(2, "0");
+    const secs = (count % 60).toString().padStart(2, "0");
+        timeRemainingContainer.innerText = `${mins}:${secs}`;
+    
+ if(count === 0) {
+clearInterval(timer);
+ } 
+},1000);
+  }
+  function stopTimer() {
+    clearInterval(timer);
+  }
+
+  startTimer();
+  
   
   /************  EVENT LISTENERS  ************/
   
@@ -194,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showResults() {
     
     // YOUR CODE HERE:
-    //
+    stopTimer();
     // 1. Hide the quiz view (div#quizView)
     quizView.style.display = "none";
     
